@@ -17,7 +17,7 @@
 <body>
   <div id="ad-container"
     style="display: block; width: 100%; padding: 20px; background-color: #f1c40f; text-align: center;">
-    <!-- <h2>Ad Playing...</h2> -->
+    
     <video height="250px" controls autoplay muted>
       <source src="./ads.mp4">
     </video>
@@ -31,33 +31,33 @@
   </div>
 
   <script>
-    let adDuration = 10; // Duration of the ad in seconds
-    let skipTime = 5; // Time after which the "Skip Ad" button appears
+    let adDuration = 10; 
+    let skipTime = 5; 
 
-    // References to elements
+
     const adContainer = document.getElementById("ad-container");
     const videoContent = document.getElementById("video-content");
     const timeLeftDisplay = document.getElementById("time-left");
     const skipButton = document.getElementById("skip-button");
 
-    // Update ad timer every second
+  
     let adTimer = setInterval(() => {
       adDuration--;
       timeLeftDisplay.textContent = adDuration;
 
-      // If ad time is over, stop ad and play video
+    
       if (adDuration <= 0) {
         clearInterval(adTimer);
         endAd();
       }
     }, 1000);
 
-    // Display "Skip Ad" button after `skipTime` seconds
+
     let skipButtonTimer = setTimeout(() => {
       skipButton.style.display = "inline-block";
     }, skipTime * 1000);
 
-    // Skip ad and show video content
+    
     skipButton.addEventListener("click", () => {
       clearInterval(adTimer);
       clearTimeout(skipButtonTimer);
@@ -66,7 +66,6 @@
 
     function endAd() {
       adContainer.remove();
-      // adContainer.style.display = "none";
       videoContent.style.display = "block";
       console.log("Ad has been skipped or finished.");
     }
